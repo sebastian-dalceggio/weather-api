@@ -5,11 +5,11 @@ from pathlib import Path
 
 import requests
 
-from weather_api.utils.files import get_json_data
+from weather_api.utils.files import get_yaml_data
 
 current_directory = Path(__file__).resolve().parent
 
-QUERY_DATA_FILE = current_directory / "smn_urls.json"
+QUERY_DATA_FILE = current_directory / "smn_data.yaml"
 
 
 def _get_query_data(query: str, data: str, date: str) -> str:
@@ -23,7 +23,7 @@ def _get_query_data(query: str, data: str, date: str) -> str:
     Returns:
         str: the data as a text
     """
-    values_dict = get_json_data(QUERY_DATA_FILE, {"query_date": date})[query]
+    values_dict = get_yaml_data(QUERY_DATA_FILE, {"query_date": date})[query]
     return values_dict[data]
 
 
