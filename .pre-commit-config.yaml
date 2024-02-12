@@ -1,9 +1,4 @@
 repos:
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.3.0
-    hooks:
-    - id: mypy
-      args: [--config-file=.github/linters/.mypy.ini]
   - repo: https://github.com/psf/black
     rev: 24.1.1
     hooks:
@@ -11,9 +6,25 @@ repos:
       language_version: python3.8
   - repo: local
     hooks:
+    - id: mypy
+      name: mypy_pacakge
+      require_serial: true
+      entry: poetry run mypy ./weather_api/
+      pass_filenames: false
+      language: python
+      types:
+      - python
+    - id: mypy
+      name: mypy_tests
+      require_serial: true
+      entry: poetry run mypy ./tests/
+      pass_filenames: false
+      language: python
+      types:
+      - python
     - id: pylint
       name: pylint
-      entry: poetry run pylint ./weather_api/
+      entry: poetry run pylint ./weather_api/ ./tests
       language: python
       types:
       - python
