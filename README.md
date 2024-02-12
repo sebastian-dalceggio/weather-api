@@ -4,7 +4,7 @@ In this Data Engineering project, data from the National Meteorological Service 
 
 ## Introduction
 
-The [National Meteorological Service of Argentina] shares its data in a series of text files for each day. This files can be downloaded from a calendar in its [web page](https://www.smn.gob.ar/descarga-de-datos). Therefore, taking information for a few days is a manual task that can take a long time. This project automates this task, downloading, cleaning and loading the data into a database. Then, it makes the data available through an API.
+The National Meteorological Service of Argentina shares its data in a series of text files for each day. This files can be downloaded from a calendar in its [web page](https://www.smn.gob.ar/descarga-de-datos). Therefore, taking information for a few days is a manual task that can take a long time. This project automates this task, downloading, cleaning and loading the data into a database. Then, it makes the data available through an API.
 
 Currently, there are available four text files per day: measured metrics, forecast, observations and solar radiation registered. Additionally, there is a file that shows the current weather state.
 

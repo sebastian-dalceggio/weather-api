@@ -2,7 +2,7 @@
 import pytest
 import requests_mock
 
-from weather_api.download.smn_download import get_smn_daily_data
+from weather_api.query.query_dict import QUERY_DICT
 
 from tests.utils import get_files_data_as_list, get_path, FileData
 
@@ -22,6 +22,6 @@ def test_existing_file(test_data: FileData) -> None:
         text_expected = file_path.read_text()
 
         requests_m.get(test_data.url, text=text_expected)
-
-        text = get_smn_daily_data(test_data.query, test_data.date)
+        query_class = QUERY_DICT[test_data.query]
+        text = query_class.download(test_data.date)
         assert text_expected == text
