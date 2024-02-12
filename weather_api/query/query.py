@@ -9,8 +9,8 @@ from weather_api.download.smn_download import get_url_data
 
 
 class Query(ABC):
-    """Abstract class with the structure that any query must follow to be used in the ETL process.
-    /"""
+    """Abstract class with the structure that any query must follow to be used in the ETL
+    process."""
 
     query: str = "base_class"
 
