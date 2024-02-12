@@ -8,7 +8,6 @@ repos:
     hooks:
     - id: mypy
       name: mypy_pacakge
-      require_serial: true
       entry: poetry run mypy ./weather_api/
       pass_filenames: false
       language: python
@@ -16,7 +15,6 @@ repos:
       - python
     - id: mypy
       name: mypy_tests
-      require_serial: true
       entry: poetry run mypy ./tests/
       pass_filenames: false
       language: python
