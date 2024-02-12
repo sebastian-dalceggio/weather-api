@@ -1,8 +1,9 @@
 "Test functions for download"
+
 import pytest
 import requests_mock
 
-from weather_api.query.query_dict import QUERY_DICT
+from weather_api.query import QUERY_DICT
 
 from tests.utils import get_files_data_as_list, get_path, FileData
 
