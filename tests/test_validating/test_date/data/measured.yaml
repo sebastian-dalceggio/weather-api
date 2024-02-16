@@ -1,0 +1,7 @@
+case_1:
+  line: "26112017     8  17.3   74  1013.0  320   13.0 AEROPARQUE AERO                                       "
+  valid_dates:
+    - "20171126"
+  invalid_dates:
+    - "20171225"
+    - "20171227"

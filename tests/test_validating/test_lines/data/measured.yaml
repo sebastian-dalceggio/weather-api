@@ -1,0 +1,66 @@
+station:
+  valid_lines:
+    case_1:
+      date: null
+      lines:
+        - "                                            O                                                       "
+        - "                                            R AERO                                                  "
+  invalid_lines:
+    case_1:
+      date: null
+      lines:
+        - "                                                                                                    "
+data:
+  valid_lines:
+    case_1:
+      date: "20221218"
+      lines:
+        - "18122022    23  18.6   83  1011.9  140   15     VIEDMA AERO                                         "
+        - "18122022     0  16.8   78  1012.2  360    9     VILLA DE MARIA DEL RIO SEC                          "
+    case_2:
+      date: "20230720"
+      lines:
+        - "20072023     6 -22.5   73   993.1  200   56     BASE ESPERANZA                                      "
+        - "20072023     6         73   993.1  200   56     BASE ESPERANZA                                      "
+        - "20072023     6 -22.5   73          200   56     BASE ESPERANZA                                      "
+        - "20072023     6 -22.5   73   993.1               BASE ESPERANZA                                      "
+        - "20072023     6              993.1  200   56     BASE ESPERANZA                                      "
+        - "20072023     6                                  BASE ESPERANZA                                      "
+  valid_dates:
+    case_1:
+      date: "20221218"
+      lines:
+        - "18122022     0  22.2   61  1014.3   60   28     AEROPARQUE AERO                                     "
+    case_2:
+      date: "20231009"
+      lines:
+        - "09102023     1  22.0   35  1011.8   30   20     CATAMARCA AERO                                      "
+  invalid_lines:
+    case_1:
+      date: "20221218"
+      lines:
+        - "18122022    23  18.6   83  1011.9  140   15"
+    case_2:
+      date: "20230720"
+      lines:
+        - "20072023     6 -22.5   -73   993.1  200   56     BASE ESPERANZA                                      "
+  invalid_dates:
+    case_1:
+      date: "20221218"
+      lines:
+        - "17122022     0  22.2   61  1014.3   60   28     AEROPARQUE AERO                                     "
+    case_2:
+      date: "20231009"
+      lines:
+        - "09092023     1  22.0   35  1011.8   30   20     CATAMARCA AERO                                      "
+empty:
+  valid_lines:
+    case_1:
+      date: null
+      lines:
+        - "                                                                                                    "
+  invalid_lines:
+    case_1:
+      date: null
+      lines:
+        - "                                                 a                                                  "

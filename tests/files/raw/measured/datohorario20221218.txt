@@ -1,5 +1,5 @@
 FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE                                             
-         [HOA]  [ÂºC]   [%]  [hPa]  [gr] [km/hr]                                                     
+         [HOA]  [ºC]   [%]  [hPa]  [gr] [km/hr]                                                     
 18122022     0  22.2   61  1014.3   60   28     AEROPARQUE AERO                                     
 18122022     1  21.7   62  1014.9   60   26     AEROPARQUE AERO                                     
 18122022     2  21.0   66  1015.2   60   20     AEROPARQUE AERO                                     
@@ -1356,76 +1356,76 @@ FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE
 18122022    22  25.5   60  1009.6   90    9     POSADAS AERO                                        
 18122022    23  25.7   61  1010.2   50    7     POSADAS AERO                                        
 18122022     0  17.5   97  1011.4  250    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     1  17.5   96  1011.2  230    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     2  16.9   98  1010.7  230    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     3  17.2   97  1010.1  230    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     4  17.3   96  1010.3  200    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     5  17.4   96  1010.0  200    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     6  17.3   96  1010.8  230    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     7  17.7   95  1011.9  230    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     8  18.4   92  1013.2  200   13     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     9  19.6   86  1013.7  230   13     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    10  22.7   71  1013.6  200   13     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    11  24.2   63  1013.6  160    6     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    12  26.1   56  1013.5  160    6     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    13  27.5   48  1013.0  160    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    14  29.4   46  1012.1  160    6     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    15  29.4   44  1011.5  250    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    16  30.2   44  1010.9  200    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    17  30.5   41  1009.3  200    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    18  30.0   43  1009.2  200    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    19  29.5   44  1009.5  250    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    20  26.2   58  1009.8  200    6     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    21  22.8   73  1010.1  250    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    22  21.5   78  1011.0  230    6     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022    23  20.6   84  1011.8  250    2     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 18122022     6  11.8   35  1004.6  200   24     PUERTO DESEADO AERO                                 
 18122022     7  12.4   34  1005.4  200   24     PUERTO DESEADO AERO                                 

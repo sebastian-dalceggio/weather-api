@@ -74,7 +74,7 @@ FECHA    TMAX  TMIN  NOMBRE
 06022024  33.3  21.8 PIGUE AERO                                                                     
 06022024  38.2  24.8 PILAR OBSERVATORIO                                                             
 06022024  37.9  24.5 POSADAS AERO                                                                   
-06022024  39.4  24.5 PRESIDENCIA ROQUE SAENZ PEÃ‘A AERO                                              
+06022024  39.4  24.5 PRESIDENCIA ROQUE SAENZ PEÑA AERO                                              
 06022024  29.5  14.8 PUERTO DESEADO AERO                                                            
 06022024  33.8  18.0 PUERTO MADRYN AERO                                                             
 06022024  30.5  21.8 PUNTA INDIO B.A.                                                               

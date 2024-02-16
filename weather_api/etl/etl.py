@@ -14,6 +14,7 @@ def download(
     date: str,
     raw_file_path: Union[Path, CloudPath],
     replace: Optional[bool] = False,
+    encode: bool = True,
 ) -> bool:
     """Downloads the required data from SMN web and save it in the raw_file_path
 
@@ -27,11 +28,11 @@ def download(
     Returns:
         bool: True if the file was downloaded, False if it already exists
     """
-    if not raw_file_path.exists() or replace:
+    if replace or not raw_file_path.exists():
         query_class = QUERY_DICT[query]
-        content = query_class.download(date)
+        content = query_class.download(date, encode=encode)
         raw_file_path.parent.mkdir(parents=True, exist_ok=True)
-        raw_file_path.write_text(content)
+        raw_file_path.write_text(content, encoding=query_class.encoding)
         return True
     print(f"File {raw_file_path.as_uri()} already exists.")
     return False

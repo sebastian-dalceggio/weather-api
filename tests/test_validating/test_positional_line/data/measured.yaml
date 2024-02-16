@@ -1,0 +1,24 @@
+headers:
+  valid_lines:
+    0:
+    - "FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE"
+    1:
+    - "         [HOA]  [ºC]   [%]  [hPa]  [gr] [km/hr]"
+  invalid_lines:
+    0:
+    - "FECHA     HORA  TEMP   HUM   PNM    DD         NOMBRE"
+    - "FECHA     HORA   TEMP  HUM   PNM    DD    FF     NOMBRE"
+    1:
+    - "         [HOA]  [C]   [%]  [hPa]  [gr] [km/hr]"
+headers_alternative:
+  valid_lines:
+    0:
+    - "FECHA     HORA   TEMP  HUM   PNM    DD    FF     NOMBRE"
+    1:
+    - "         [HOA]   [ºC]  [%]  [hPa]  [gr] [km/hr]"
+  invalid_lines:
+    0:
+    - "FECHA     HORA   TEMP  HUM   PNM        FF     NOMBRE"
+    - "FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE"
+    1:
+    - "         [HOA]   [ºC]  [%]  [hPa]  [] [km/hr]"

@@ -1,5 +1,5 @@
 FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE                                             
-         [HOA]  [ÂºC]   [%]  [hPa]  [gr] [km/hr]                                                     
+         [HOA]  [ºC]   [%]  [hPa]  [gr] [km/hr]                                                     
 06022024     0  27.6   78  1014.3   90   13     AEROPARQUE AERO                                     
 06022024     1  27.9   78  1014.6   70   13     AEROPARQUE AERO                                     
 06022024     2  27.8   76  1014.6   50   15     AEROPARQUE AERO                                     
@@ -1311,76 +1311,76 @@ FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE
 06022024    22  26.1   75  1012.3   90    7     POSADAS AERO                                        
 06022024    23  26.2   76  1012.0  110    6     POSADAS AERO                                        
 06022024     0  31.7   53  1011.1   70   13     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     1  30.4   60  1011.2   70    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     2  30.0   61  1011.1   90    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     3  28.2   69  1011.2   70    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     4  27.6   72  1011.3   90    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     5  27.1   74  1011.3   90    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     6  26.2   77  1011.8   90    4     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     7  24.9   83  1012.5    0    0     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     8  28.0   70  1013.5   90    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     9  30.9   58  1013.7   90   11     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    10  33.9   48  1014.2   50   13     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    11  35.0   46  1014.5   50    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    12  35.8   41  1014.0   50   15     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    13  36.8   38  1013.5  340   19     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    14  37.2   36  1012.4  360   17     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    15  37.6   36  1011.1   50   11     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    16  38.7   33  1009.4   90   13     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    17  38.7   34  1008.7   70    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    18  37.6   34  1008.5   90    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    19  37.1   33  1008.8   70    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    20  34.6   43  1009.5   70    6     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    21  33.6   45  1010.5  140    9     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    22  31.7   52  1010.9  110    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024    23  30.5   57  1011.2  110    7     PRESIDENCIA ROQUE SAENZ PE                          
-                                            Ã‘A AERO                                                 
+                                            ÑA AERO                                                 
                                                                                                     
 06022024     6  17.1   57  1003.6  270   33     PUERTO DESEADO AERO                                 
 06022024     7  16.6   57  1003.1  270   33     PUERTO DESEADO AERO                                 

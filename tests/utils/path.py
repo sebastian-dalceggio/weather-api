@@ -4,6 +4,8 @@ from typing import List, Dict
 from pathlib import Path
 import yaml
 
+from weather_api.query import QUERY_DICT
+
 from tests.utils.data import FileData
 
 FILES_DIRECTORY = Path(__file__).resolve().parent.parent / "files"
@@ -67,3 +69,22 @@ def get_files_data_as_list(stage: str) -> List[FileData]:
     """
     data = get_files_data()[stage]
     return dict_to_test_data(data)
+
+
+def read_test_cases_from_yaml(directory: Path) -> Dict:
+    """Reads all the yaml files with the test cases and returns a dictionary.
+
+    Args:
+        directory (Path): directory where the yaml files are
+
+    Returns:
+        Dict: dicitonary with the test cases
+    """
+    data = {}
+    for file in directory.iterdir():
+        query = file.stem
+        query_class = QUERY_DICT[query]
+        encoding = query_class.encoding
+        current_yaml = yaml.safe_load(file.open(encoding=encoding))
+        data[query] = current_yaml
+    return data

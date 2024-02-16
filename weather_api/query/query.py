@@ -1,6 +1,6 @@
 "Module with the abstract class Query that is used as a blue print for all the ETL process"
 
-from typing import Optional
+from typing import IO, Any
 from abc import ABC, abstractmethod
 
 import requests
@@ -13,15 +13,14 @@ class Query(ABC):
     process."""
 
     query: str = "base_class"
+    encoding: str = "iso-8859-1"
 
     @classmethod
-    def download(cls, date: str, encoding: Optional[str] = None) -> str:
+    def download(cls, date: str, encode: bool = True) -> str:
         """Returns the requested daily data as text.
 
         Args:
             date (str): data required in the format YYYYMMDD
-            enconding (Optional[str], optional): encoding use to read the data from the source.
-                Defaults to None.
 
         Returns:
             str: response as a text
@@ -29,8 +28,8 @@ class Query(ABC):
 
         url, file_does_not_exist_mssg = get_url_data(cls.query, date)
         response = requests.get(url, timeout=60)
-        if encoding:
-            response.encoding = encoding
+        if encode:
+            response.encoding = cls.encoding
         text = response.text
         if text == file_does_not_exist_mssg:
             raise FileNotFoundError(file_does_not_exist_mssg)
@@ -38,5 +37,10 @@ class Query(ABC):
 
     @classmethod
     @abstractmethod
-    def validate(cls) -> None:
-        """Validate the structure of the text file."""
+    def validate_raw(cls, date: str, file: IO[Any]) -> None:
+        """Validate the structure of a text file.
+
+        Args:
+            date (str): date required in the format YYYYMMDD
+            file (IO[Any]): open file with the text to validate
+        """

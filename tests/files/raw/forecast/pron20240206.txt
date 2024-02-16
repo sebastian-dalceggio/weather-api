@@ -1,5 +1,5 @@
 ************************************************************************************************
-Producto basado en un modelo de pronÃ³stico numÃ©rico del tiempo, 
+Producto basado en un modelo de pronóstico numérico del tiempo, 
 por lo tanto puede diferir del pronostico emitido por el SMN
 ************************************************************************************************
 
@@ -3039,7 +3039,7 @@ PASO_DE_LOS_LIBRES_AERO
  10/FEB/2024 18Hs.        36.3        42 |  16         0.0 
  10/FEB/2024 21Hs.        31.4        57 |  10         0.0 
 ================================================================================================
-PCIA._ROQUE_SAENZ_PEÃA_AERO
+PCIA._ROQUE_SAENZ_PEÑA_AERO
 ================================================================================================
      FECHA *          TEMPERATURA      VIENTO      PRECIPITACION(mm)
                                     (DIR | KM/H)                        

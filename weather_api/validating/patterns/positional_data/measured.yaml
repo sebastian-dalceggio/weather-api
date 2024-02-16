@@ -1,0 +1,6 @@
+headers:
+  0: "FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE                                             "
+  1: "         [HOA]  [ºC]   [%]  [hPa]  [gr] [km/hr]                                                     "
+headers_alternative:
+  0: "FECHA     HORA   TEMP  HUM   PNM    DD    FF     NOMBRE                                             "
+  1: "         [HOA]   [ºC]  [%]  [hPa]  [gr] [km/hr]                                                     "

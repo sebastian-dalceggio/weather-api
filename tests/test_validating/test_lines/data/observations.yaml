@@ -1,0 +1,19 @@
+data:
+  valid_lines:
+    case_1:
+      date: "20240206"
+      lines:
+        - "06022024   1.9  -0.3 BASE SAN MARTIN                                                                "
+        - "06022024        20.6 DOLORES AERO                                                                   "
+        - "06022024  35.9       MORON AERO                                                                     "
+  invalid_lines:
+    case_1:
+      date: "20240206"
+      lines:
+        - "06022024  35.0  24.4                                                                                "
+        - "          35.0  24.4 BUENOS AIRES OBSERVATORIO                                                      "
+  invalid_dates:
+    case_1:
+      date: "20240205"
+      lines:
+        - "06022024   1.9  -0.3 BASE SAN MARTIN                                                                "

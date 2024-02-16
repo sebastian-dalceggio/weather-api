@@ -26,6 +26,10 @@ requests-mock = "^1.11.0"
 types-requests = "^2.31.0.20240125"
 types-pyyaml = "^6.0.12.12"
 
+
+[tool.poetry.group.etl.dependencies]
+pendulum = "^3.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

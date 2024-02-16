@@ -1,0 +1,7 @@
+headers:
+  valid_lines:
+    0:
+    -  "TIMESTAMP,Global BsAs [W/m2],Difusa BsAs [W/m2],Global Ush [W/m2],Difusa Ush [W/m2]"
+  invalid_lines:
+    0:
+    -  "TIMESTAMP,Global BsAs [W/m2],Difusa BsAs [W/m2]"

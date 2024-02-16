@@ -1,0 +1,54 @@
+station:
+  valid_lines:
+    case_1:
+      date: null
+      lines:
+        - "BAHIA_BLANCA_AERO"
+        - "BUENOS_AIRES"
+  invalid_lines:
+    case_1:
+      date: null
+      lines:
+        - " "
+data:
+  valid_lines:
+    case_1:
+      date: "20221218"
+      lines:
+        - " 18/DIC/2022 00Hs.        18.4        73 |  13         0.0 "
+        - " 22/DIC/2022 18Hs.        19.0        62 |  50        11.9 "
+    case_2:
+      date: "20231009"
+      lines:
+        - " 12/OCT/2023 06Hs.        -0.9       344 |   4         0.0 "
+  valid_dates:
+    case_1:
+      date: "20221218"
+      lines:
+        - " 18/DIC/2022 00Hs.        14.7        58 |  23         0.0 "
+        - " 19/DIC/2022 21Hs.        24.7        44 |  16         0.0 "
+        - " 20/DIC/2022 00Hs.        18.7        60 |  23         0.0 "
+        - " 21/DIC/2022 15Hs.        37.2        29 |  17         0.0 "
+        - " 22/DIC/2022 21Hs.        28.5        64 |  18         0.0 "
+    case_2:
+      date: "20231009"
+      lines:
+        - " 10/OCT/2023 00Hs.        16.4        22 |  13         0.2 "
+  invalid_lines:
+    case_1:
+      date: "20221218"
+      lines:
+        - " 18/DIC/2022        18.4        73 |  13         0.0 "
+    case_2:
+      date: "20231009"
+      lines:
+        - " 12/OCT/2023 06Hs.        -0.9       -344 |   4         0.0 "
+  invalid_dates:
+    case_1:
+      date: "20221213"
+      lines:
+        - " 18/DIC/2022 00Hs.        14.7        58 |  23         0.0 "
+    case_2:
+      date: "20231011"
+      lines:
+        - " 10/OCT/2023 00Hs.        16.4        22 |  13         0.2 "
