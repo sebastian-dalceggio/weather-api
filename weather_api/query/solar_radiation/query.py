@@ -4,7 +4,7 @@ from typing import IO, Any
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
-from weather_api.exceptions import NotExpectedHeader, NotExpectedLine
+from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 
 
 class SolarRadiation(Query):
@@ -18,8 +18,8 @@ class SolarRadiation(Query):
         lines = file.readlines()
         for i in range(1):
             if not check_positional_line(cls.query, "headers", lines[i], i):
-                raise NotExpectedHeader(lines[i], i)
+                raise NotExpectedPositionalLine(lines[i], i)
         iterator = iter(lines[1:])
         for line in iterator:
             if not check_line(cls.query, line, "data", date):
-                raise NotExpectedLine(line)
+                raise NotExpectedPattern(line)

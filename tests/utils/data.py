@@ -11,3 +11,4 @@ class FileData:
     date: str
     url: str = ""
     not_exist: str = ""
+    exception: str = ""

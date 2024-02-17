@@ -4,7 +4,7 @@ from typing import IO, Any
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
-from weather_api.exceptions import NotExpectedHeader, NotExpectedLine
+from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 
 
 class Forecast(Query):
@@ -22,10 +22,10 @@ class Forecast(Query):
         if check_positional_line(cls.query, "headers", lines[0], 0):
             for i in range(5):
                 if not check_positional_line(cls.query, "headers", lines[i], i):
-                    raise NotExpectedHeader(lines[i], i)
+                    raise NotExpectedPositionalLine(lines[i], i)
             iterator = iter(lines[5:])
         elif not check_line(cls.query, lines[0], "station"):
-            raise NotExpectedLine(lines[0])
+            raise NotExpectedPattern(lines[0])
         else:
             iterator = iter(lines)
         for line in iterator:
@@ -35,19 +35,19 @@ class Forecast(Query):
                     if not check_positional_line(
                         cls.query, "inter_headers", next_line, i
                     ):
-                        raise NotExpectedHeader(next_line, i)
+                        raise NotExpectedPositionalLine(next_line, i)
                 next_line = next(iterator, "end_of_the_file")
                 check_line(cls.query, next_line, "data", date)
                 for i in range(39):
                     next_line = next(iterator, "end_of_the_file")
                     check = check_line(cls.query, next_line, "data", date)
                     if not check:
-                        raise NotExpectedLine(next_line)
+                        raise NotExpectedPattern(next_line)
                 next_line = next(iterator, "end_of_the_file")
                 check_end = check_positional_line(
                     cls.query, "inter_headers", next_line, 0
                 )
                 if not check_end:
-                    raise NotExpectedLine(next_line)
+                    raise NotExpectedPattern(next_line)
             else:
-                raise NotExpectedLine(line)
+                raise NotExpectedPattern(line)

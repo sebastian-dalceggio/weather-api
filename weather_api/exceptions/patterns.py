@@ -1,7 +1,7 @@
 "Exceptions for lines not following a pattern"
 
 
-class NotExpectedLine(Exception):
+class NotExpectedPattern(Exception):
     """Used when a line doesn't follow the expected pattern"""
 
     def __init__(self, line: str) -> None:
@@ -14,7 +14,7 @@ class NotExpectedLine(Exception):
         super().__init__(self.message)
 
 
-class NotExpectedHeader(Exception):
+class NotExpectedPositionalLine(Exception):
     """Used when a header doesn't follow the expected pattern."""
 
     def __init__(self, line: str, position: int) -> None:

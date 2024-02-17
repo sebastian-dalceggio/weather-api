@@ -4,7 +4,7 @@ from typing import IO, Any
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
-from weather_api.exceptions import NotExpectedHeader, NotExpectedLine
+from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 
 
 class Measured(Query):
@@ -22,23 +22,23 @@ class Measured(Query):
             ) and not check_positional_line(
                 cls.query, "headers_alternative", lines[i], i
             ):
-                raise NotExpectedHeader(lines[i], i)
+                raise NotExpectedPositionalLine(lines[i], i)
         iterator = iter(lines[2:])
         current_pattern = "data"
         for line in iterator:
             if current_pattern == "empty":
                 if not check_line(cls.query, line, "data", date):
-                    raise NotExpectedLine(line)
+                    raise NotExpectedPattern(line)
                 current_pattern = "data"
             elif current_pattern == "station":
                 if not check_line(cls.query, line, "empty"):
-                    raise NotExpectedLine(line)
+                    raise NotExpectedPattern(line)
                 current_pattern = "empty"
             elif current_pattern == "data":
                 if not check_line(cls.query, line, "data", date) and not check_line(
                     cls.query, line, "station"
                 ):
-                    raise NotExpectedLine(line)
+                    raise NotExpectedPattern(line)
                 if check_line(cls.query, line, "data", date):
                     current_pattern = "data"
                 else:

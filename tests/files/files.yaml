@@ -31,4 +31,71 @@ raw:
       date: "20240206"
       url: https://ssl.smn.gob.ar/dpd/descarga_opendata.php?file=observaciones/obs20240206.txt
       not_exist: observaciones/obs20240206.txtEl archivo no existe.
-  
+invalid_raw:
+  measured:
+    header.txt:
+      date: "20221218"
+      exception: NotExpectedPositionalLine
+    missing_date.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    missing_hour.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    station.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    wrong_date.txt:
+      date: "20221218"
+      exception: WrongDateError
+  forecast:
+    header.txt:
+      date: "20221218"
+      exception: NotExpectedPositionalLine
+    inter_header.txt:
+      date: "20221218"
+      exception: NotExpectedPositionalLine
+    missing_date.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    missing_hour.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    missing_number.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    station.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    wrong_date.txt:
+      date: "20221218"
+      exception: WrongDateError
+  solar_radiation:
+    header.txt:
+      date: "20221218"
+      exception: NotExpectedPositionalLine
+    missing_date.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    missing_hour.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+    wrong_date.txt:
+      date: "20221218"
+      exception: WrongDateError
+    wrong_seconds.txt:
+      date: "20221218"
+      exception: NotExpectedPattern
+  observations:
+    header.txt:
+      date: "20240206"
+      exception: NotExpectedPositionalLine
+    missing_date.txt:
+      date: "20240206"
+      exception: NotExpectedPattern
+    wrong_date.txt:
+      date: "20240206"
+      exception: WrongDateError
+    station.txt:
+      date: "20240206"
+      exception: NotExpectedPattern

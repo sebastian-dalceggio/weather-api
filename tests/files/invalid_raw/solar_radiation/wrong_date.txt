@@ -1,0 +1,2 @@
+TIMESTAMP,Global BsAs [W/m2],Difusa BsAs [W/m2],Global Ush [W/m2],Difusa Ush [W/m2]
+2022-12-19 00:01:00,-2.349,-1.392,66.466,38.344
