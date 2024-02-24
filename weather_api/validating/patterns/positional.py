@@ -21,7 +21,7 @@ def read_positional() -> Dict[str, Dict[str, Dict[int, str]]]:
     for file in PATTERNS_DIRECTORY.iterdir():
         query = file.stem
         query_class = QUERY_DICT[query]
-        encoding = query_class.encoding
+        encoding = query_class.ENCODING
         data = yaml.safe_load(file.open(encoding=encoding))
         positional_patterns[query] = data
     return positional_patterns

@@ -17,7 +17,7 @@ def test_validate_raw_valid_files(test_data: FileData) -> None:
     """
     query_class = QUERY_DICT[test_data.query]
     file_path = get_path("raw", test_data.query, test_data.file_name)
-    text = file_path.open(encoding=query_class.encoding)
+    text = file_path.open(encoding=query_class.ENCODING)
     query_class.validate_raw(test_data.date, text)
 
 
@@ -30,7 +30,7 @@ def test_validate_raw_invalid_files(test_data: FileData) -> None:
     """
     query_class = QUERY_DICT[test_data.query]
     file_path = get_path("invalid_raw", test_data.query, test_data.file_name)
-    text = file_path.open(encoding=query_class.encoding)
+    text = file_path.open(encoding=query_class.ENCODING)
     exception = EXCEPTION_DICT[test_data.exception]
     with pytest.raises(exception):
         query_class.validate_raw(test_data.date, text)

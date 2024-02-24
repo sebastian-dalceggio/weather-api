@@ -36,11 +36,15 @@ def invert_date(date: str) -> str:
     return date[6:8] + date[4:6] + date[:4]
 
 
-def format_measured_datetime(datetime: str) -> pendulum.DateTime:
+def format_measured_datetime(
+    datetime: str, tz: str = "America/Argentina/Buenos_Aires"
+) -> pendulum.DateTime:
     """Returns a pendulum datetime object from a datetime string with the format DDMMYYY    HH.
 
     Args:
         datetime (str): date in the format "DDMMYYY    HH"
+        tz (str, optional): the timezone of the datetime. Defaults to
+            "America/Argentina/Buenos_Aires".
 
     Returns:
         pendulum.DateTime: pendulum datetime
@@ -49,15 +53,19 @@ def format_measured_datetime(datetime: str) -> pendulum.DateTime:
     month = int(datetime[2:4])
     day = int(datetime[:2])
     hour = int(datetime[12:14])
-    return pendulum.datetime(year, month, day, hour)
+    return pendulum.datetime(year, month, day, hour, tz=tz)
 
 
-def format_forecast_datetime(datetime: str) -> pendulum.DateTime:
+def format_forecast_datetime(
+    datetime: str, tz: str = "America/Argentina/Buenos_Aires"
+) -> pendulum.DateTime:
     """Returns a pendulum datetime object from a datetime string with the format DD/MMM/YYYY HH,
     with the month in Spanish.
 
     Args:
         datetime (str): date in the format "DD/MMM/YYYY HH"
+        tz (str, optional): the timezone of the datetime. Defaults to
+            "America/Argentina/Buenos_Aires".
 
     Returns:
         pendulum.DateTime: pendulum datetime
@@ -66,14 +74,47 @@ def format_forecast_datetime(datetime: str) -> pendulum.DateTime:
     month = MONTHS_DICT[datetime[3:6]]
     day = int(datetime[:2])
     hour = int(datetime[12:14])
-    return pendulum.datetime(year, month, day, hour)
+    return pendulum.datetime(year, month, day, hour, tz=tz)
 
 
-def get_pendulum_datetime(date: str) -> pendulum.DateTime:
+def format_solar_radiation_datetime(
+    datetime: str, tz: str = "America/Argentina/Buenos_Aires"
+) -> pendulum.DateTime:
+    """Returns a pendulum datetime object from a datetime string with the format
+    YYYY-MM-DD HH:mm:ss.
+
+    Args:
+        datetime (str): date in the format "YYYY-MM-DD HH:mm:ss"
+        tz (str, optional): the timezone of the datetime. Defaults to
+            "America/Argentina/Buenos_Aires".
+
+    Returns:
+        pendulum.DateTime: pendulum datetime
+    """
+    return pendulum.from_format(datetime, "YYYY-MM-DD HH:mm:ss", tz=tz)
+
+
+def format_observations_date(date: str) -> pendulum.Date:
+    """Returns a pendulum date object from a date string with the format DDMMYYYY.
+
+    Args:
+        date (str): date in the format "DDMMYYYY"
+
+    Returns:
+        pendulum.DateTime: pendulum date
+    """
+    return pendulum.from_format(date, "DDMMYYYY").date()
+
+
+def get_pendulum_datetime(
+    date: str, tz: str = "America/Argentina/Buenos_Aires"
+) -> pendulum.DateTime:
     """Returns the a pendulum datetime object from a datetime string with the format "YYYYMMDD".
 
     Args:
         date (str): date in the format YYYYMMDD
+        tz (str, optional): the timezone of the datetime. Defaults to
+            "America/Argentina/Buenos_Aires".
 
     Returns:
         pendulum.DateTime: pendulum datetime
@@ -81,7 +122,7 @@ def get_pendulum_datetime(date: str) -> pendulum.DateTime:
     year = int(date[:4])
     month = int(date[4:6])
     day = int(date[6:8])
-    return pendulum.datetime(year, month, day)
+    return pendulum.datetime(year, month, day, tz=tz)
 
 
 def get_str_date(query: str, date: str) -> str:

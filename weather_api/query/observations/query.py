@@ -1,25 +1,48 @@
 "Module with Observation class that implements Query abstract class."
 
-from typing import IO, Any
+from typing import IO, Any, List, Dict
+
+import pandas as pd
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
 from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
+from weather_api.utils.date import format_observations_date
+from weather_api.query.observations.schema import COLUMNS
 
 
 class Observations(Query):
-    """Class for measured query."""
+    """Class for observations query."""
 
-    query: str = "observations"
-    encoding: str = "iso-8859-1"
+    QUERY: str = "observations"
+    ENCODING: str = "iso-8859-1"
+    SCHEMA: List[str] = COLUMNS
 
     @classmethod
     def validate_raw(cls, date: str, file: IO[Any]) -> None:
         lines = file.readlines()
         for i in range(3):
-            if not check_positional_line(cls.query, "headers", lines[i], i):
+            if not check_positional_line(cls.QUERY, "headers", lines[i], i):
                 raise NotExpectedPositionalLine(lines[i], i)
         iterator = iter(lines[3:])
         for line in iterator:
-            if not check_line(cls.query, line, "data", date):
+            if not check_line(cls.QUERY, line, "data", date):
                 raise NotExpectedPattern(line)
+
+    @classmethod
+    def _do_get_dataframe(cls, date: str, lines: List) -> pd.DataFrame:
+        rows = []
+        rows_to_filter = [0, 1]
+        for pos, line in enumerate(lines):
+            current_dict: Dict[str, Any] = {}
+            if pos in rows_to_filter:
+                continue
+            if check_line(cls.QUERY, line, "station"):
+                continue
+            current_date = line[:15]
+            current_dict["date"] = format_observations_date(current_date)
+            current_dict["temperature_max"] = line[9:15].strip()
+            current_dict["temperature_min"] = line[15:21].strip()
+            current_dict["station"] = line[21:].strip()
+            rows.append(current_dict)
+        return pd.DataFrame(rows)

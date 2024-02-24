@@ -22,7 +22,7 @@ def test_download(test_data: FileData) -> None:
 
         file_path = get_path(STAGE, test_data.query, test_data.file_name)
 
-        text_expected = file_path.read_text(encoding=query_class.encoding)
+        text_expected = file_path.read_text(encoding=query_class.ENCODING)
 
         requests_m.get(test_data.url, text=text_expected)
 

@@ -12,3 +12,4 @@ class FileData:
     url: str = ""
     not_exist: str = ""
     exception: str = ""
+    origin: str = ""

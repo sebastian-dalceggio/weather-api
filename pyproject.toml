@@ -29,6 +29,9 @@ types-pyyaml = "^6.0.12.12"
 
 [tool.poetry.group.etl.dependencies]
 pendulum = "^3.0.0"
+pandas = "2.0.03"
+pandera = "^0.18.0"
+sqlalchemy = "^2.0.27"
 
 [build-system]
 requires = ["poetry-core"]

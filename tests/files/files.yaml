@@ -99,3 +99,19 @@ invalid_raw:
     station.txt:
       date: "20240206"
       exception: NotExpectedPattern
+csv:
+  forecast:
+    20221218.csv:
+      date: "20221218"
+      origin: "pron20221218.txt"
+  measured:
+    20221218.csv:
+      date: "20221218"
+      origin: "datohorario20221218.txt"
+to_csv:
+  forecast:
+    pron20221218.txt:
+      date: "20221218"
+  measured:
+    datohorario20221218.txt:
+      date: "20221218"

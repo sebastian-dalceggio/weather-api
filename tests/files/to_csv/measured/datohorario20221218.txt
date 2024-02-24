@@ -1,0 +1,10 @@
+FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE                                             
+         [HOA]  [ºC]   [%]  [hPa]  [gr] [km/hr]                                                     
+18122022     0  22.2   61  1014.3   60   28     AEROPARQUE AERO                                     
+18122022     5  10.2   94  1015.3   70    9     AZUL AERO                                           
+18122022     6 -12.0  100  1015.8  359  100     AZUL AERO                                           
+18122022     7                                  AZUL AERO                                           
+18122022     9  20.4   51  1013.5    0    0     VILLA DE MARIA DEL RIO SEC                          
+                                            O                                                       
+                                                                                                    
+18122022    10  22.0   50  1012.4  180    9     VILLA REYNOLDS AERO                                 

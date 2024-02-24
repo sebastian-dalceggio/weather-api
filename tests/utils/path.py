@@ -84,7 +84,7 @@ def read_test_cases_from_yaml(directory: Path) -> Dict:
     for file in directory.iterdir():
         query = file.stem
         query_class = QUERY_DICT[query]
-        encoding = query_class.encoding
+        encoding = query_class.ENCODING
         current_yaml = yaml.safe_load(file.open(encoding=encoding))
         data[query] = current_yaml
     return data
