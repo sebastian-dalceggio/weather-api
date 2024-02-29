@@ -1,0 +1,4 @@
+FECHA     HORA  TEMP   HUM   PNM    DD    FF     NOMBRE                                             
+         [HOA]  [ºC]   [%]  [hPa]  [gr] [km/hr]                                                     
+18122022     0  22.2   61  1014.3   60   28     AEROPARQUE AERO                                     
+18122022     0  10.2   94  1015.3   70    9     AEROPARQUE AERO                                     

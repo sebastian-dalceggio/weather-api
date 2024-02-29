@@ -1,0 +1,8 @@
+
+FECHA    TMAX  TMIN  NOMBRE                                                                         
+-------- ----- ----- ----------------------------------------                                       
+06022024  31.8  24.0 AEROPARQUE AERO                                                                
+06022024        19.1 AZUL AERO                                                                      
+06022024  39.4       BAHIA BLANCA AERO                                                              
+06022024             BARILOCHE AERO                                                                 
+06022024  -0.6 -11.4 BASE BELGRANO II                                                               

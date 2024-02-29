@@ -1,14 +1,15 @@
 "Module with Forecast class that implements Query abstract class."
 
-from typing import IO, Any, List, Dict
+from typing import IO, Any, List, Dict, Type
 
 import pandas as pd
+import pandera as pa
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
 from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 from weather_api.utils.date import format_forecast_datetime, get_pendulum_datetime
-from weather_api.query.forecast.schema import COLUMNS
+from weather_api.query.forecast.schema import ForecastSchema
 
 
 class Forecast(Query):
@@ -16,7 +17,7 @@ class Forecast(Query):
 
     QUERY: str = "forecast"
     ENCODING: str = "utf-8"
-    COLUMNS: List[str] = COLUMNS
+    PA_SCHEMA: Type[pa.DataFrameModel] = ForecastSchema
 
     @classmethod
     def validate_raw(  # pylint: disable=too-many-branches

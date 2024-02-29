@@ -1,14 +1,15 @@
 "Module with Measured class that implements Query abstract class."
 
-from typing import IO, Any, List, Dict
+from typing import IO, Any, List, Dict, Type
 
 import pandas as pd
+import pandera as pa
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
 from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 from weather_api.utils.date import format_measured_datetime
-from weather_api.query.measured.schema import COLUMNS
+from weather_api.query.measured.schema import MeasuredSchema
 
 
 class Measured(Query):
@@ -16,7 +17,7 @@ class Measured(Query):
 
     QUERY: str = "measured"
     ENCODING: str = "iso-8859-1"
-    COLUMNS: List[str] = COLUMNS
+    PA_SCHEMA: Type[pa.DataFrameModel] = MeasuredSchema
 
     @classmethod
     def validate_raw(cls, date: str, file: IO[Any]) -> None:

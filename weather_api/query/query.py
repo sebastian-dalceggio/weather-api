@@ -1,13 +1,13 @@
 "Module with the abstract class Query that is used as a blue print for all the ETL process."
 
-from typing import IO, Any, List
+from typing import IO, Any, List, Type
 from abc import ABC, abstractmethod
 
 import requests
 import pandas as pd
+import pandera as pa
 
 from weather_api.download.smn_download import get_url_data
-from weather_api.data_catalog import Schema
 
 
 class Query(ABC):
@@ -16,16 +16,7 @@ class Query(ABC):
 
     QUERY: str = "base_class"
     ENCODING: str = "iso-8859-1"
-    COLUMNS: List[str]
-
-    @classmethod
-    def schema(cls) -> Schema:
-        """Returns the schema of the query.
-
-        Returns:
-            Schema: schema of the query
-        """
-        return Schema(cls.QUERY, cls.COLUMNS)
+    PA_SCHEMA: Type[pa.DataFrameModel] = pa.DataFrameModel
 
     @classmethod
     def download(cls, date: str, encode: bool = True) -> str:
@@ -64,6 +55,12 @@ class Query(ABC):
     @classmethod
     @abstractmethod
     def _do_get_dataframe(cls, date: str, lines: List) -> pd.DataFrame:
+        # @pa.check_types
+        # def _do_get_dataframe(cls, date: str, lines: List) ->
+        #   pa.typing.DataFrame[pa.DataFrameModel]:
+        # There is an open issue in Panderas about the same problem that I'm having on using
+        # sublclases of DataFrameModel in the type hints. Because of it I will use validate method.
+        # see: https://github.com/unionai-oss/pandera/issues/1170
         """Do the actual transformation from the text file to the csv file.
 
         Args:
@@ -89,5 +86,17 @@ class Query(ABC):
         lines = file_text.readlines()
         dataframe = cls._do_get_dataframe(date, lines)
         dataframe.replace("", pd.NA, inplace=True)
-        dataframe = dataframe.astype(cls.schema().dtypes)
+        dataframe = cls.PA_SCHEMA.validate(dataframe) # type: ignore[assignment]
+        # dataframe = dataframe.astype(cls.PA_SCHEMA.to_schema().dtypes)  # type: ignore[arg-type]
         return dataframe
+
+    @classmethod
+    def validate_csv(cls, dataframe: pd.DataFrame, lazy: bool = True) -> None:
+        """Validates the Pandas DataFrame
+
+        Args:
+            ddataframe (pd.DataFrame): Pandas DataFrame extracted from the csv data
+            lazy (bool, optional): if True, lazily evaluates dataframe against all validation.
+                Defaults to True.
+        """
+        cls.PA_SCHEMA.validate(dataframe, lazy=lazy)

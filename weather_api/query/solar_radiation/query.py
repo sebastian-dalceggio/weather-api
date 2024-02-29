@@ -1,14 +1,15 @@
 "Module with SolarRadiation class that implements Query abstract class."
 
-from typing import IO, Any, List, Dict
+from typing import IO, Any, List, Dict, Type
 
 import pandas as pd
+import pandera as pa
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
 from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 from weather_api.utils.date import format_solar_radiation_datetime
-from weather_api.query.solar_radiation.schema import COLUMNS
+from weather_api.query.solar_radiation.schema import SolarRadiationSchema
 
 
 class SolarRadiation(Query):
@@ -16,7 +17,7 @@ class SolarRadiation(Query):
 
     QUERY: str = "solar_radiation"
     ENCODING: str = "us-ascii"
-    COLUMNS: List[str] = COLUMNS
+    PA_SCHEMA: Type[pa.DataFrameModel] = SolarRadiationSchema
 
     @classmethod
     def validate_raw(cls, date: str, file: IO[Any]) -> None:

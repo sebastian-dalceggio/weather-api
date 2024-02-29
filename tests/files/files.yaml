@@ -108,10 +108,37 @@ csv:
     20221218.csv:
       date: "20221218"
       origin: "datohorario20221218.txt"
+  observations:
+    20240206.csv:
+      date: "20240206"
+      origin: "obs20240206.txt"
+  solar_radiation:
+    20221218.csv:
+      date: "20221218"
+      origin: "radsolar20221218.txt"
 to_csv:
   forecast:
     pron20221218.txt:
       date: "20221218"
   measured:
     datohorario20221218.txt:
+      date: "20221218"
+  observations:
+    obs20240206.txt:
+      date: "20240206"
+  solar_radiation:
+    radsolar20221218.txt:
+      date: "20221218"
+invalid_raw_to_csv:
+  forecast:
+    repeated_data.txt:
+      date: "20221218"
+  measured:
+    repeated_data.txt:
+      date: "20221218"
+  observations:
+    repeated_data.txt:
+      date: "20240206"
+  solar_radiation:
+    repeated_data.txt:
       date: "20221218"

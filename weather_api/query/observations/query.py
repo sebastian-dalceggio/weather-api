@@ -1,14 +1,15 @@
 "Module with Observation class that implements Query abstract class."
 
-from typing import IO, Any, List, Dict
+from typing import IO, Any, List, Dict, Type
 
 import pandas as pd
+import pandera as pa
 
 from weather_api.query.query import Query
 from weather_api.validating import check_line, check_positional_line
 from weather_api.exceptions import NotExpectedPositionalLine, NotExpectedPattern
 from weather_api.utils.date import format_observations_date
-from weather_api.query.observations.schema import COLUMNS
+from weather_api.query.observations.schema import ObservationsSchema
 
 
 class Observations(Query):
@@ -16,7 +17,7 @@ class Observations(Query):
 
     QUERY: str = "observations"
     ENCODING: str = "iso-8859-1"
-    SCHEMA: List[str] = COLUMNS
+    PA_SCHEMA: Type[pa.DataFrameModel] = ObservationsSchema
 
     @classmethod
     def validate_raw(cls, date: str, file: IO[Any]) -> None:
@@ -32,14 +33,12 @@ class Observations(Query):
     @classmethod
     def _do_get_dataframe(cls, date: str, lines: List) -> pd.DataFrame:
         rows = []
-        rows_to_filter = [0, 1]
+        rows_to_filter = [0, 1, 2]
         for pos, line in enumerate(lines):
             current_dict: Dict[str, Any] = {}
             if pos in rows_to_filter:
                 continue
-            if check_line(cls.QUERY, line, "station"):
-                continue
-            current_date = line[:15]
+            current_date = line[:8]
             current_dict["date"] = format_observations_date(current_date)
             current_dict["temperature_max"] = line[9:15].strip()
             current_dict["temperature_min"] = line[15:21].strip()

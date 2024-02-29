@@ -28,6 +28,3 @@ def get_test_cases(case_type: str) -> List[Tuple[str, str, str, str]]:
                     for line in case["lines"]:
                         list_of_data.append((query, line, pattern, date))
     return list_of_data
-
-
-print(get_test_cases("invalid_lines"))

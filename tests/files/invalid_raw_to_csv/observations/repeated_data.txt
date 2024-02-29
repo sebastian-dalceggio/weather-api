@@ -1,0 +1,5 @@
+
+FECHA    TMAX  TMIN  NOMBRE                                                                         
+-------- ----- ----- ----------------------------------------                                       
+06022024  31.8  24.0 AEROPARQUE AERO                                                                
+06022024        19.1 AEROPARQUE AERO                                                                

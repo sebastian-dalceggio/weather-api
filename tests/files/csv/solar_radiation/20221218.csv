@@ -1,0 +1,5 @@
+datetime,city,global_radiation,difuse_radiation
+2022-12-18 00:01:00-03:00,Buenos Aires,-2.349,-1.392
+2022-12-18 00:01:00-03:00,Ushuaia,66.466,38.344
+2022-12-18 00:02:00-03:00,Buenos Aires,,
+2022-12-18 00:02:00-03:00,Ushuaia,,
