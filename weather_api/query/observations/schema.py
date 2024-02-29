@@ -1,13 +1,13 @@
 "Schema for observations query."
 
-from weather_api.data_catalog.pandas_dtypes import (
+import pandera as pa
+
+from weather_api.data_catalog.column_type import (
     Station,
     Datetime,
     Temperature,
     BaseSchema,
 )
-
-import pandera as pa
 
 
 class ObservationsSchema(BaseSchema):
@@ -18,5 +18,7 @@ class ObservationsSchema(BaseSchema):
     temperature_min: Temperature = pa.Field(nullable=True)
     station: Station
 
-    class Config:
+    class Config:  # pylint: disable=too-few-public-methods
+        """Schema config class"""
+
         unique = ["station", "date"]

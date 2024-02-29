@@ -3,11 +3,11 @@ repos:
     rev: 24.1.1
     hooks:
     - id: black
-      language_version: python3.8
+      language_version: python3.10
   - repo: local
     hooks:
     - id: mypy
-      name: mypy_pacakge
+      name: mypy_package
       entry: poetry run mypy ./weather_api/
       pass_filenames: false
       language: python

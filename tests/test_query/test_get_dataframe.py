@@ -25,6 +25,7 @@ def test_get_dataframe(test_data: FileData) -> None:
     result_df = query_class.get_dataframe(test_data.date, text)
     pd.testing.assert_frame_equal(result_df, expected_df)
 
+
 @pytest.mark.parametrize("test_data", get_files_data_as_list("invalid_raw_to_csv"))
 def test_get_dataframe_invalid(test_data: FileData) -> None:
     """Tests that a get_datframe method of each class returns the correct Pandas Dataframe.
