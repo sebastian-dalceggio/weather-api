@@ -5,6 +5,7 @@ description = ""
 authors = ["Sebastián Dalceggio <sdalceggio@gmail.com>"]
 readme = "README.md"
 packages = [{include = "weather_api"}]
+include = ["weather_api/py.typed"]
 
 [tool.pytest.ini_options]
 pythonpath = ["weather_api"]
@@ -13,7 +14,7 @@ pythonpath = ["weather_api"]
 [tool.poetry.dependencies]
 python = "~3.10"
 requests = "^2.31.0"
-cloudpathlib = "^0.17.0"
+cloudpathlib = "^0.18.0"
 
 
 [tool.poetry.group.dev.dependencies]

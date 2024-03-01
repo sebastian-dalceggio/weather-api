@@ -5,6 +5,24 @@ from typing import Dict
 from string import Template
 import yaml
 
+EXTENSION: Dict[str, str] = {"raw": "txt", "csv": "csv"}
+
+
+def get_file_relative_path(stage: str, query: str, date: str) -> str:
+    """Returns the relative path of the file. It doesn't take into account the
+    specific storage system.
+
+    Args:
+        stage (str): {"raw", "cleaned", "csv"}: stage of data required
+        query (str), {"measured", "forecast"}: type of data required
+        date (str): date required in the format YYYYMMDD
+
+    Returns:
+        str: relative path of the file
+    """
+    extension = EXTENSION[stage]
+    return f"{stage}/{query}/{date[:4]}/{date[4:6]}/{date[6:8]}.{extension}"
+
 
 def get_yaml_data(path: Path, values: Dict[str, str]) -> Dict:
     """Reads a yaml file and return it as a dictionary replacing the variables identified in the
