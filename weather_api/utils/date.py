@@ -21,6 +21,8 @@ MONTHS_DICT: Dict[str, int] = {
 DAYS_DELAY: Dict[str, int] = {
     "measured": 1,
     "forecast": 0,
+    "observations": 1,
+    "solar_radiation": 1,
 }
 
 
@@ -137,6 +139,6 @@ def get_str_date(query: str, date: str) -> str:
         str: date in the format YYYYMMDD
     """
     days_delay = DAYS_DELAY[query]
-    pendulum_date = pendulum.from_format(date, "YYYY-MM-DD[T]HH:mm:ssZ")
+    pendulum_date = pendulum.from_format(date, "YYYY-MM-DD HH:mm:ssZ")
     real_date = pendulum_date.subtract(days=days_delay)
     return real_date.format("YYYYMMDD")
