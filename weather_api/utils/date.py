@@ -133,7 +133,7 @@ def get_str_date(query: str, date: str) -> str:
 
     Args:
         query (str), {"measured", "forecast"}: type of data required
-        date (str): data_interval_end as airflow gives it in the format "YYYY-MM-DD[T]HH:mm:ssZ"
+        date (str): data_interval_end as airflow gives it in the format "YYYY-MM-DD HH:mm:ssZ"
 
     Returns:
         str: date in the format YYYYMMDD
