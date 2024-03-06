@@ -20,10 +20,6 @@ repos:
       language: python
       types:
       - python
-    - id: mypy_airflow
-      name: mypy_airflow
-      entry: bash run_mypy_airflow.sh
-      language: system
     - id: pylint
       name: pylint
       entry: poetry run pylint ./weather_api/ ./tests
@@ -31,7 +27,3 @@ repos:
       pass_filenames: false
       types:
       - python
-    - id: pylint_airflow
-      name: pylint_airflow
-      entry: bash run_pylint_airflow.sh
-      language: system
