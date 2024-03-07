@@ -3,6 +3,8 @@
 from typing import Tuple
 from pathlib import Path
 
+import requests
+
 from weather_api.utils.files import get_yaml_data
 
 current_directory = Path(__file__).resolve().parent
@@ -22,3 +24,26 @@ def get_url_data(query: str, date: str) -> Tuple[str, str]:
     """
     values_dict = get_yaml_data(QUERY_DATA_FILE, {"query_date": date})[query]
     return values_dict["url"], values_dict["not exist"]
+
+
+def download_data(query: str, date: str, encoding: str | None) -> str:
+    """Returns the requested daily data as text.
+
+    Args:
+        date (str): data required in the format YYYYMMDD.
+        encode (bool, optional): if the response has to be encoded. Defaults to True.
+
+    Raises:
+        FileNotFoundError: if the file is not available in the source.
+
+    Returns:
+        str: response as a text.
+    """
+    url, file_does_not_exist_mssg = get_url_data(query, date)
+    response = requests.get(url, timeout=60)
+    if encoding:
+        response.encoding = encoding
+    text = response.text
+    if text == file_does_not_exist_mssg:
+        raise FileNotFoundError(file_does_not_exist_mssg)
+    return text

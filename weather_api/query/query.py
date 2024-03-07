@@ -3,11 +3,10 @@
 from typing import IO, Any, List, Type
 from abc import ABC, abstractmethod
 
-import requests
 import pandas as pd
 import pandera as pa
 
-from weather_api.download.smn_download import get_url_data
+from weather_api.download.smn_download import download_data
 
 
 class Query(ABC):
@@ -32,15 +31,8 @@ class Query(ABC):
         Returns:
             str: response as a text.
         """
-
-        url, file_does_not_exist_mssg = get_url_data(cls.QUERY, date)
-        response = requests.get(url, timeout=60)
-        if encode:
-            response.encoding = cls.ENCODING
-        text = response.text
-        if text == file_does_not_exist_mssg:
-            raise FileNotFoundError(file_does_not_exist_mssg)
-        return text
+        encoding = cls.ENCODING if encode else None
+        return download_data(cls.QUERY, date, encoding)
 
     @classmethod
     @abstractmethod
@@ -86,7 +78,7 @@ class Query(ABC):
         lines = file_text.readlines()
         dataframe = cls._do_get_dataframe(date, lines)
         dataframe.replace("", pd.NA, inplace=True)
-        dataframe = cls.PA_SCHEMA.validate(dataframe) # type: ignore[assignment]
+        dataframe = cls.PA_SCHEMA.validate(dataframe)  # type: ignore[assignment]
         # dataframe = dataframe.astype(cls.PA_SCHEMA.to_schema().dtypes)  # type: ignore[arg-type]
         return dataframe
 
