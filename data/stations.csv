@@ -1,4 +1,4 @@
-id,station,measured_station,forecast_station,observation_station,comentarios
+id,station,measured_station,forecast_station,observation_station,comments
 1,aeroparque,AEROPARQUE AERO,AEROPARQUE,AEROPARQUE AERO,
 2,azul_aero,AZUL AERO,AZUL_AERO,AZUL AERO,
 3,bahia_blanca_aero,BAHIA BLANCA AERO,BAHIA_BLANCA_AERO,BAHIA BLANCA AERO,

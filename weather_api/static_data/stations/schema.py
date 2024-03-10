@@ -16,3 +16,4 @@ class StationSchema(BaseSchema):
     measured_station: Station = pa.Field(nullable=True)
     forecast_station: Station = pa.Field(nullable=True)
     observation_station: Station = pa.Field(nullable=True)
+    comments: str = pa.Field(nullable=True)

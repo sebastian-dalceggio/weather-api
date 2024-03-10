@@ -14,3 +14,4 @@ class Stations(Base):
     measured_station: Mapped[Station | None]
     forecast_station: Mapped[Station | None]
     observation_station: Mapped[Station | None]
+    comments: Mapped[str | None]
