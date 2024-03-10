@@ -5,6 +5,8 @@ from typing import Optional
 from pathlib import Path
 
 from cloudpathlib import CloudPath
+import pandas as pd
+import sqlalchemy as sa
 
 from weather_api.query import QUERY_DICT, Query
 
@@ -90,3 +92,18 @@ def migrate_database(database_uri: str, version_locations: Path | CloudPath) -> 
         version_location (Union[Path, CloudPath]): folder where the versions will be saved
     """
     Query.run_database_migration(database_uri, version_locations)
+
+
+def to_database(query: str, csv_file_path: Path | CloudPath, database_uri: str) -> None:
+    """Loads the query table to the database.
+
+    Args:
+        query (str), {"measured", "forecast", "observations", "solar_radiation"}: type of data
+        csv_file_path (Union[Path, CloudPath]): path to the csv file
+        database_uri (str): uri of the database
+    """
+    query_class = QUERY_DICT[query]
+    dataframe = pd.read_csv(str(csv_file_path), encoding=query_class.ENCODING)
+    engine = sa.create_engine(database_uri)
+    with engine.connect() as connection:
+        query_class.load_to_database(dataframe, connection)
