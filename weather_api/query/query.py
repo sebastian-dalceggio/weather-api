@@ -156,9 +156,7 @@ class Query(ABC):
         scan = Scan()
         scan.set_data_source_name(data_source_name)
         scan.add_configuration_yaml_file(str(configuration_file_path.absolute()))
-        data_contract = (
-            Path(__file__).parent / cls.QUERY / "data_contracts" / "data_contract.yml"
-        )
+        data_contract = Path(__file__).parent / cls.QUERY / "data_contract.yml"
         with open(data_contract, encoding="utf-8") as f:
             data_contract_yaml_str: str = f.read()
         data_contract_parser = DataContractTranslator()
