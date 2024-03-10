@@ -27,6 +27,7 @@ from weather_api.query.forecast.sql_schema import Forecast
 from weather_api.query.measured.sql_schema import Measured
 from weather_api.query.observations.sql_schema import Observations
 from weather_api.query.solar_radiation.sql_schema import SolarRadiation
+from weather_api.static_data.stations.sql_schema import Stations
 
 target_metadata = Base.metadata
 
