@@ -107,3 +107,18 @@ def to_database(query: str, csv_file_path: Path | CloudPath, database_uri: str) 
     engine = sa.create_engine(database_uri)
     with engine.connect() as connection:
         query_class.load_to_database(dataframe, connection)
+
+
+def check_to_database(
+    query: str, date: str, data_source_name: str, configuration_file_path: Path
+) -> None:
+    """Data validation on the query tables using Soda.
+
+    Args:
+        query (str), {"measured", "forecast", "observations", "solar_radiation"}: type of data.
+        date (str): date required in the format YYYYMMDD.
+        data_source_name (str): data source name.
+        configuration_file_path (Path): path to the datasource configuration path.
+    """
+    query_class = QUERY_DICT[query]
+    query_class.check_load_to_database(date, data_source_name, configuration_file_path)

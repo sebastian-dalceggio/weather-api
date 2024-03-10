@@ -7,4 +7,5 @@ from weather_api.etl.etl import (
     to_csv,
     migrate_database,
     to_database,
+    check_to_database,
 )
