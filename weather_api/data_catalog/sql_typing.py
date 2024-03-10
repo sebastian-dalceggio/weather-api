@@ -4,14 +4,14 @@ from typing import Annotated
 
 import datetime
 
-DatetimeT = datetime.datetime
-TemperatureT = Annotated[float, 3, 1]
-HumidityT = int
-PressureT = Annotated[float, 5, 1]
-WindDirectionT = int
-WindSpeedT = Annotated[float, 4, 1]
-PrecipitationT = Annotated[float, 4, 1]
-StationT = str
-CityT = str
-ProvinceT = str
-RadiationT = Annotated[float, 7, 3]
+Datetime = datetime.datetime
+Temperature = Annotated[float, 3, 1]
+Humidity = int
+Pressure = Annotated[float, 5, 1]
+WindDirection = int
+WindSpeed = Annotated[float, 4, 1]
+Precipitation = Annotated[float, 4, 1]
+Station = str
+City = str
+Province = str
+Radiation = Annotated[float, 7, 3]

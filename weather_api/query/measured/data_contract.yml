@@ -1,0 +1,23 @@
+dataset: measured
+
+columns:
+  - name: station
+    data_type: character varying
+    not_null: true
+  - name: datetime
+    data_type: timestamp with time zone
+    not_null: true
+  - name: temperature
+    data_type: double precision
+  - name: wind_direction
+    data_type: integer
+  - name: wind_speed
+    data_type: double precision
+  - name: humidity
+    data_type: integer
+  - name: pressure
+    data_type: double precision
+checks:
+  - row_count > 0
+  - duplicate_count(station, datetime) = 0
+  - freshness using datetime with ${DATE} < 1d

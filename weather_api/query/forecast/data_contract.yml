@@ -1,0 +1,25 @@
+dataset: forecast
+
+columns:
+  - name: station
+    data_type: character varying
+    not_null: true
+  - name: datetime
+    data_type: timestamp with time zone
+    not_null: true
+  - name: temperature
+    data_type: double precision
+  - name: wind_direction
+    data_type: integer
+  - name: wind_speed
+    data_type: double precision
+  - name: precipitation
+    data_type: double precision
+  - name: forecast_date
+    data_type: date
+    not_null: true
+
+checks:
+  - row_count > 0
+  - duplicate_count(station, datetime, forecast_date) = 0
+  - freshness using datetime with ${DATE} < 1d

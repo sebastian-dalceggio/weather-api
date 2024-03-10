@@ -1,0 +1,18 @@
+dataset: forecast
+
+columns:
+  - name: city
+    data_type: character varying
+    not_null: true
+  - name: datetime
+    data_type: timestamp with time zone
+    not_null: true
+  - name: global_radiation
+    data_type: double precision
+  - name: difuse_radiation
+    data_type: double precision
+
+checks:
+  - row_count > 0
+  - duplicate_count(city, datetime) = 0
+  - freshness using datetime with ${DATE} < 1d

@@ -1,0 +1,18 @@
+dataset: forecast
+
+columns:
+  - name: station
+    data_type: character varying
+    not_null: true
+  - name: date
+    data_type: timestamp with time zone
+    not_null: true
+  - name: temperature_max
+    data_type: double precision
+  - name: temperature_max_min
+    data_type: double precision
+
+checks:
+  - row_count > 0
+  - duplicate_count(station, date) = 0
+  - freshness using date with ${DATE} < 1d
