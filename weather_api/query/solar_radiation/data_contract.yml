@@ -1,4 +1,4 @@
-dataset: forecast
+dataset: solar_radiation
 
 columns:
   - name: city
@@ -8,9 +8,9 @@ columns:
     data_type: timestamp with time zone
     not_null: true
   - name: global_radiation
-    data_type: double precision
+    data_type: numeric
   - name: difuse_radiation
-    data_type: double precision
+    data_type: numeric
 
 checks:
   - row_count > 0

@@ -1,4 +1,4 @@
-dataset: forecast
+dataset: observations
 
 columns:
   - name: station
@@ -8,9 +8,9 @@ columns:
     data_type: timestamp with time zone
     not_null: true
   - name: temperature_max
-    data_type: double precision
+    data_type: numeric
   - name: temperature_max_min
-    data_type: double precision
+    data_type: numeric
 
 checks:
   - row_count > 0

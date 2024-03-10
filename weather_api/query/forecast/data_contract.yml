@@ -8,13 +8,13 @@ columns:
     data_type: timestamp with time zone
     not_null: true
   - name: temperature
-    data_type: double precision
+    data_type: numeric
   - name: wind_direction
     data_type: integer
   - name: wind_speed
-    data_type: double precision
+    data_type: numeric
   - name: precipitation
-    data_type: double precision
+    data_type: numeric
   - name: forecast_date
     data_type: date
     not_null: true
