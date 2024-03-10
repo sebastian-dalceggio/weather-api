@@ -19,6 +19,8 @@ Station = pd.StringDtype
 City = pd.StringDtype
 Province = pd.StringDtype
 Radiation = pd.Float64Dtype
+Comments = pd.StringDtype
+Id = pd.Int64Dtype
 
 
 class BaseSchema(pa.DataFrameModel):

@@ -4,6 +4,8 @@ import pandera as pa
 
 from weather_api.data_catalog.pandas_types import (
     Station,
+    Id,
+    Comments,
     BaseSchema,
 )
 
@@ -11,9 +13,9 @@ from weather_api.data_catalog.pandas_types import (
 class StationSchema(BaseSchema):
     """Forecast Pandera schema"""
 
-    id: int = pa.Field(unique=True)
+    id: Id = pa.Field(unique=True)
     station: Station
     measured_station: Station = pa.Field(nullable=True)
     forecast_station: Station = pa.Field(nullable=True)
     observation_station: Station = pa.Field(nullable=True)
-    comments: str = pa.Field(nullable=True)
+    comments: Comments = pa.Field(nullable=True)
