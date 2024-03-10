@@ -15,3 +15,5 @@ Station = str
 City = str
 Province = str
 Radiation = Annotated[float, 7, 3]
+Comments = str
+Id = int

@@ -15,6 +15,8 @@ from weather_api.data_catalog.sql_typing import (
     City,
     Province,
     Radiation,
+    Comments,
+    Id,
 )
 
 
@@ -34,5 +36,7 @@ class Base(DeclarativeBase):  # pylint: disable=too-few-public-methods
             City: VARCHAR,
             Province: VARCHAR,
             Radiation: NUMERIC(7, 3),
+            Comments: VARCHAR,
+            Id: INTEGER,
         }
     )
