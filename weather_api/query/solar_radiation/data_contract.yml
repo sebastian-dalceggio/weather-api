@@ -15,4 +15,4 @@ columns:
 checks:
   - row_count > 0
   - duplicate_count(city, datetime) = 0
-  - freshness using datetime with NOW < 2d
+  - freshness using datetime with NOW < 1d
