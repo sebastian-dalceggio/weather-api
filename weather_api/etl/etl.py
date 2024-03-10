@@ -9,6 +9,7 @@ import pandas as pd
 import sqlalchemy as sa
 
 from weather_api.query import QUERY_DICT, Query
+from weather_api.static_data import STATIC_DICT
 
 
 def download(
@@ -122,3 +123,14 @@ def check_to_database(
     """
     query_class = QUERY_DICT[query]
     query_class.check_load_to_database(date, data_source_name, configuration_file_path)
+
+
+def load_static_data(static_data: str, database_uri: str) -> None:
+    """Load static data into the database.
+
+    Args:
+        static_data (str), {"stations"}: type of data.
+        database_uri (str): uri of the database
+    """
+    static_data_type = STATIC_DICT[static_data]
+    static_data_type(database_uri)

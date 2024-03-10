@@ -8,4 +8,5 @@ from weather_api.etl.etl import (
     migrate_database,
     to_database,
     check_to_database,
+    load_static_data,
 )
