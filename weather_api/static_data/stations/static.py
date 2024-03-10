@@ -7,7 +7,7 @@ import sqlalchemy as sa
 
 from weather_api.static_data.stations.schema import StationSchema
 
-FILES_DIRECTORY = Path(__file__).resolve().parent.parent.parent / "data"
+FILES_DIRECTORY = Path(__file__).resolve().parent.parent.parent.parent / "data"
 
 
 def stations_to_database(database_uri: str) -> None:
