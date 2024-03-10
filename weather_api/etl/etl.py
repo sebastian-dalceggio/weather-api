@@ -1,18 +1,18 @@
 """Actual functions that Airflow will import to run the ETL process. They translate the query name
 into the specfic class while hundle the files."""
 
-from typing import Union, Optional
+from typing import Optional
 from pathlib import Path
 
 from cloudpathlib import CloudPath
 
-from weather_api.query import QUERY_DICT
+from weather_api.query import QUERY_DICT, Query
 
 
 def download(
     query: str,
     date: str,
-    raw_file_path: Union[Path, CloudPath],
+    raw_file_path: Path | CloudPath,
     replace: Optional[bool] = False,
     encode: bool = True,
 ) -> bool:
@@ -39,7 +39,7 @@ def download(
     return False
 
 
-def validate_raw(query: str, date: str, raw_file_path: Union[Path, CloudPath]) -> None:
+def validate_raw(query: str, date: str, raw_file_path: Path | CloudPath) -> None:
     """Validate that the raws data follows te established pattern.
 
     Args:
@@ -56,8 +56,8 @@ def validate_raw(query: str, date: str, raw_file_path: Union[Path, CloudPath]) -
 def to_csv(
     query: str,
     date: str,
-    text_file_path: Union[Path, CloudPath],
-    csv_file_path: Union[Path, CloudPath],
+    text_file_path: Path | CloudPath,
+    csv_file_path: Path | CloudPath,
     replace: Optional[bool] = False,
 ) -> None:
     """Transforms the text file into a csv file.
@@ -80,3 +80,13 @@ def to_csv(
             )
     else:
         print(f"File {csv_file_path.as_uri()} already exists.")
+
+
+def migrate_database(database_uri: str, version_locations: Path | CloudPath) -> None:
+    """Validates the structure of the csv file
+
+    Args:
+        database_uri (str): uri of the database
+        version_location (Union[Path, CloudPath]): folder where the versions will be saved
+    """
+    Query.run_database_migration(database_uri, version_locations)

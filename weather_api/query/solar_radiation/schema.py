@@ -2,7 +2,7 @@
 
 import pandera as pa
 
-from weather_api.data_catalog.column_type import Radiation, Datetime, City, BaseSchema
+from weather_api.data_catalog.pandas_types import Radiation, Datetime, City, BaseSchema
 
 
 class SolarRadiationSchema(BaseSchema):
