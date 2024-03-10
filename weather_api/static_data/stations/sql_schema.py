@@ -9,7 +9,8 @@ class Stations(Base):
 
     __tablename__ = "stations"
 
-    station: Mapped[Station] = mapped_column(primary_key=True)
-    measured_station: Mapped[Station | None] = mapped_column(primary_key=True)
-    forecast_station: Mapped[Station | None] = mapped_column(primary_key=True)
-    observation_station: Mapped[Station | None] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    station: Mapped[Station]
+    measured_station: Mapped[Station | None]
+    forecast_station: Mapped[Station | None]
+    observation_station: Mapped[Station | None]
