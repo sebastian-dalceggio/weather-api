@@ -22,4 +22,4 @@ columns:
 checks:
   - row_count > 0
   - duplicate_count(station, datetime, forecast_date) = 0
-  - freshness using datetime with NOW = 1d
+  - freshness using datetime with NOW < 2d

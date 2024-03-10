@@ -9,10 +9,10 @@ columns:
     not_null: true
   - name: temperature_max
     data_type: numeric
-  - name: temperature_max_min
+  - name: temperature_min
     data_type: numeric
 
 checks:
   - row_count > 0
   - duplicate_count(station, date) = 0
-  - freshness using date with NOW = 1d
+  - freshness using date with NOW < 2d
