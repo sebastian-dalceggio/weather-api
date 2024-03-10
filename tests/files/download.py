@@ -1,7 +1,7 @@
 "Download module used to get the files for testing."
 
 from pathlib import Path
-import requests
+import requests  # type: ignore[import-untyped]
 
 from weather_api.query import QUERY_DICT
 

@@ -3,7 +3,7 @@
 from typing import Tuple
 from pathlib import Path
 
-import requests
+import requests  # type: ignore[import-untyped]
 
 from weather_api.utils.files import get_yaml_data
 
