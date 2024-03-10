@@ -15,4 +15,4 @@ columns:
 checks:
   - row_count > 0
   - duplicate_count(station, date) = 0
-  - freshness using date with ${DATE} < 1d
+  - freshness using date with NOW = 1d
