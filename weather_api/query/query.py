@@ -161,7 +161,7 @@ class Query(ABC):
             data_contract_yaml_str: str = f.read()
         data_contract_parser = DataContractTranslator()
         pendulum_date = get_pendulum_datetime(date)
-        scan.add_variables({"DATE": str(pendulum_date)})
+        scan.add_variables({"DATE": str(pendulum_date.naive())})
         sodacl_yaml_str = data_contract_parser.translate_data_contract_yaml_str(
             data_contract_yaml_str
         )

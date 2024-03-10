@@ -16,7 +16,7 @@ columns:
   - name: precipitation
     data_type: numeric
   - name: forecast_date
-    data_type: date
+    data_type: timestamp with time zone
     not_null: true
 
 checks:
