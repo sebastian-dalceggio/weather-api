@@ -86,4 +86,10 @@ Al igual que para las queries también fueron desarrolladas funciones similares 
 
 ### Módulo etl
 
-El módulo etl ofrece funciones más simples para ser manejadas directamente por Airflow. De esta forma Airflow no necesita saber como están implementadas internamente las queries y solo pasando el nombre de cada una se devuelve la función correspondiente.
+El módulo etl ofrece funciones más simples para ser manejadas directamente por Airflow. De esta forma, Airflow no necesita saber como están implementadas internamente las queries y pasando solo el nombre de cada una se devuelve la función correspondiente.
+
+## Próximos pasos
+
+El próximo paso es utilizar dbt para hacer la limpieza de datos. Luego armar la API con FastAPI.
+
+También están pendientes algunos tests.
