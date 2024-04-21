@@ -1,95 +1,99 @@
 # Weather-API
 
-En este proyecto de ingeniería de datos se extraen los datos disponibles en la web del servicio meteorológico nacional, los cuales son limpiados y cargados en una base de datos. Estos datos se podrán consultar mediante una API (pendiente).
+In this Data Engineering project, data from the National Meteorological Service of Argentina (SMN) is extracted, cleaned and loaded into a database and then made available through an API.
 
-## Introducción
+## Introduction
 
-El servicio meteorológico nacional comparte ciertas métricas en su página web a través de un [calendario](https://www.smn.gob.ar/descarga-de-datos), pudiendose obtener esta información para un día específico. Por esto, la descarga de información de múltiples días puede llegar a tomar mucho tiempo. Este proyecto, se encarga de automatizar esta tarea.
+The SMN shares weather metrics via text files for each day. These files can be downloaded from a calendar in its [web page](https://www.smn.gob.ar/descarga-de-datos). Since there are four files per day, taking information from just a few days is a manual task that can be time-consuming. This project automates this task, downloading, cleaning and loading the data into a database. It then makes the data available through an API.
+
+Currently, four text files are available per day: measured metrics, forecast, observations and solar radiation registered. Additionally, there is a file that shows the current weather state.
 
 ## CI/CD
 
-Para armar el CI/CD pipeline se utilizan dos herramientas: pre-commit y Github Actions.
+When the code is committed, three hooks are triggered using pre-commit: Black, MyPy and Pylint. These three tools are used to ensure the quality and standardization of the code.
 
-Con pre-commit se corren los librerías black, pylint y mypy para asegurarse la calidad del código.
+Github Actions are used to run the tests after the code is pushed to Github. The tests were developed using Pytest.
 
-Luego, cuando ocurre un cambio en Github se corren los tests usando Github Actions. Los tests fueron desarrollados usando la libería Pytest.
+## Infrastructure
 
-## Orquestración
+Terraform is used to manage the infrastructure using code. First, it will develop as a local application but then the code will be added to be used in GCP, AWS and Azure.
 
-Para orquestrar todo este proceso se utiliza Airflow. En el se instala un virtual environment con el paquete weather-api instalado para ser usado en las tasks. El código de Airflow se encuentra en un [repositiorio separado](https://github.com/sebastian-dalceggio/weather-api-airflow).
+## Orchestration
+
+Airflow is used to orchestrate all the ETL process. A virtual environment is created in which the weather-api package is installed to use it for some of the tasks. The airflow code is available in a different [repository](https://github.com/sebastian-dalceggio/weather-api-airflow) because it uses other python depenedencies.
 
 ## Weather-api
 
-### Armado del paquete weather-api
+### weather-api package
 
-Para crear un virtual environment y hacer un control de las dependencias del paquete se utiliza Poetry. En el grupo "dev" se agregan todas las dependencias para desarrollo. En el grupo "etl" las dependencias necesarias para armar el ETL.
+To create a virtual environment and have a control over the dependencies, Poetry is used. There is a dependency group called "dev" that has all the ones that are used for development. On the other hand, the one named "etl" has those used to build the ETL process.
 
-Debido a que es necesario tener un sensor en Airflow para revisar cuando se carga un nuevo archivo a la página web, este paquete debe ser instalado en el mismo ambiente que Airflow. Para mantener en un mínimo las paquetes a instalar y así evitar un conflicto con Airflow, se creó el grupo "etl" con las dependencias que van a ser llamadas desde una "task.external_python". Cabe aclarar que esto es necesario porque no hay disponible en Airflow un sensor que utilice un virtual environment. El código que es posible utilizar sin instalar las dependencias "etl" es el del módulo "etl_extras".
+Due the fact that a sensor is needed in Airflow to check if a new file has been uploaded to the web page, this package must be installed in the same environment as Airflow. To minimize the number of packages to install and thus avoid a dependency conflict with Airflow, the "etl" dependency group was created. The package with this group is instaled in a virtual environment within the Airflow environment. This environment is used in the "task.external_python" tasks. This is necesary because there is no sensor available that can use a virtual environment.
 
-### Estructura:
+The code that can be used without installing the "etl" dependencies is the "etl_extras" module.
 
-Los módulos que componen el paquete son los siguientes:
+### Structure:
+
+The package has the following modules:
 
 ```
 weather-api
-├── data_catalog -> catálogo de datos para unificar tipos entre las distintas tablas
-├── download     -> funciones usadas para la descarga de datos
-├── etl          -> funciones simples que van a ser usadas por Airflow
-├── etl_extras   -> funciones usadas por Airflow con la mínima cantidad de dependencias
-├── exceptions   -> excepciones creadas para el paquete
-├── migrations   -> código usado por Alembic para crear las tablas
-├── query        -> código necesario para extraer, limpiar, validar y cargar los datos
-├── static_data  -> código para cargar los datos estáticos
-├── utils        -> funciones utilizadas por distintos módulos
-└── validation   -> funciones para la validación de los archivos de texto
+├── data_catalog -> data catalog that unifies the data types within tables
+├── download     -> functions used to download data
+├── etl          -> basic functions used by airflow
+├── etl_extras   -> functions used by airflow that doesn't need the "etl" dependencies
+├── exceptions   -> custom exceptions
+├── migrations   -> code used by Alembic to create the tables
+├── query        -> code needed to extract, clean, validate and load data
+├── static_data  -> code used to load static data
+├── utils        -> util functions
+└── validation   -> functions used to validate text files
 ```
 
 ### Queries
 
-Para mantener una homogeneidad entre todas las descargas de datos se creo la Clase Query que tiene todos métodos estáticos. Esta clase sirve como una interfaz para todas las queries que hay que desarrollar (forecast, measured, observations y solar_radiation).
+The Query Class was created with the aim of having a homogeneity between all types of queries. This class has only static methods and works as an interface for all the queries (forecast, measured, observations and solar_radiation).
 
-Cada query tiene un módulo con este esquema:
+Each one has a module with the following schema:
 
 ```
 query
-├── data_contract -> soda data_contract para validar los datos en la base de datos
-├── query         -> implementación de los métodos abastractos de la clase base
-├── schema        -> pandera esquema para el archivo csv
-└── sql_schema    -> modelo de sqlalchemy
+├── data_contract -> soda data_contract to validate the data in the database
+├── query         -> implementation of the abstracts methods of the base class
+├── schema        -> pandera schema of the csv file
+└── sql_schema    -> sqlalchemy model
 ```
 
-Este esquema común para todas las queries también ayuda en el desarrollo de los test debido a que un mismo test puede ser parametrizado para ser utilizado con cualquiera de ellas.
+Since all queries has the same schema, test development is easier because the same test can be used for all of them through parametrization.
 
-#### Validación de datos
+#### Data validation
 
-Los archivos de texto descargados son analizados para comprobar su composición. Para esto se utilizan datos estáticos para las partes estáticas de los archivos y regex para las partes variables.
+All the text files downloaded are analyzed for composition. Static data is used to check the static section of each file and regular expressions are used for the variable one.
 
-### Transformacion en csv
+### Transformation into csv
 
-Para transformar los archivos de texto en csv se utiliza pandas junto a pandera. Cada query tiene una función específica que extrae cada dato de los archivos de texto para luego formar el dataframe. Cada query tiene un modelo de padera el cual establece el tipo de dato que tiene que tener cada columna junto algunas restricciones.
+To transform the text files into csv files, Pandas and Pandera are used. Each query has its own function that extracts each data from the text files to create the dataframe. Additionaly, each one has a pandera model that declares the data type of each column and the validations that each dataframe must pass.
 
-### Creación de las tablas en la base de datos.
+### Database tables creation
 
-Para crear las tablas en la base datos y guardar un versionado de las mismas es utilizado alembic. El ORM de sqlalchemy es utilizado para armar un modelo para cada query.
+Alembic is used to create the tables and maintain a version history of them. Sqlalchemy ORM is used to create a model for each query.
 
-### Carga en la base de datos
+### Load into the database
 
-Para cargar los archivos csv en la base de datos se utiliza pandas junto a sqlalchemy.
+To load the csv files into the tables, Pandas is used together with Sqlalchemy.
 
-### Validación de los datos en la base de datos
+### Data validation in the database
 
-Para validar los datos directamente en la base de datos se utiliza Soda. Cada query tiene su propio data contract con los requisitos para cada columna y para la tabla completa.
+Soda is used to validate data within the database. Each query has its own data contract with requirements for each column and also for the entire table.
 
-### Archivos estáticos
+### Static files
 
-Al igual que para las queries también fueron desarrolladas funciones similares para la carga en la base de datos de archivos estáticos, como el listado de estaciones meteorológicas.
+As in the case of the queries, similar functions were developed to load static files such as the list of weather stations into the database .
 
-### Módulo etl
+### etl module
 
-El módulo etl ofrece funciones más simples para ser manejadas directamente por Airflow. De esta forma, Airflow no necesita saber como están implementadas internamente las queries y pasando solo el nombre de cada una se devuelve la función correspondiente.
+The etl module offers simple functions to be used directly by Airflow. This way Airflow doesn't need to know how the queries are implemented internally and passing only the name of each one obtains the corresponding function.
 
-## Próximos pasos
+## Next steps
 
-El próximo paso es utilizar dbt para hacer la limpieza de datos. Luego armar la API con FastAPI.
-
-También están pendientes algunos tests.
+The next step is to use dbt to make the data cleaning on the database. Then the API has to be developed using FastApi.
